@@ -1,0 +1,30 @@
+#ifndef _SERVISE_FUNCTIONS_HPP_
+#define _SERVISE_FUNCTIONS_HPP_
+
+#include <iostream>
+#include <windows.h>
+#include <string>
+
+// Inline-функция, чтобы компилятор сразу видел её тело во всех файлах, куда подключен hpp
+inline void GetLine(std::wstring& str)
+{
+    std::getline(std::wcin, str, L'\n');
+}
+
+bool IsNumber(const std::wstring& str);
+bool IsNotSameName(const std::wstring& choosename, std::wstring* nameArr, size_t commonSize);
+
+template <class ArrType>
+void ArrPushBack(ArrType*& arr, size_t& arrSize)
+{
+    ArrType* temp = new ArrType[arrSize + 1];
+    for (size_t i = 0; i < arrSize; i++)
+    {
+        temp[i] = arr[i];
+    }
+    delete[] arr;
+    arr = temp;
+    arrSize++;
+}
+
+#endif // !_SERVISE_FUNCTIONS_HPP_
